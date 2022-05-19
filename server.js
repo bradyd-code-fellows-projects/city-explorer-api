@@ -1,14 +1,12 @@
 'use strict';
 
-console.log('My first server');
-
 // REQUIRE
 
-const express = require('express');
-let data = require('./data/weather.json');
-const cors = require('cors');
-const { response } = require('express');
 require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+let data = require('./data/weather.json');
+const axios = require('axios');
 
 // USE
 
