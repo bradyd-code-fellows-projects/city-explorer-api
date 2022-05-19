@@ -37,7 +37,7 @@
 
 #### 17 May 2022
 
-#### Name of feature: Setup
+##### Name of feature: Setup
 
 Estimate of time needed to complete: 30mins
 
@@ -47,18 +47,58 @@ Finish time: 5:27
 
 Actual time needed to complete: 27 mins
 
-![lab07wrrc](src/img/lab07-wrrc.png)
+![lab07-wrrc](src/img/lab07-wrrc.png)
 
-Name of feature: Weather
+##### Name of feature: Weather
 
 Estimate of time needed to complete: 2 hours
 
 Start time: 6:55
 
+Finish time: 9:30
+
+Actual time needed to complete: 2hrs 35mins
+
+#### 18 May 2022
+
+##### Name of feature: Errors
+
+Estimate of time needed to complete: 30 mins
+
+Start time: 5:00
+
+Finish time:  5:20
+
+Actual time needed to complete: 20 mins
+
+### Lab 08
+
+![lab08-wrrc](src/img/lab08-wrrc.png)
+
+Name of feature:
+
+Estimate of time needed to complete:
+
+Start time:
+
 Finish time:
 
 Actual time needed to complete:
 
+<!-- ## Lab 
+
+Name of feature:
+
+Estimate of time needed to complete:
+
+Start time:
+
+Finish time:
+
+Actual time needed to complete: -->
 
 ## Credit and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+
+Lab 07 Web Request Response Cycle - Collaborated with [Dylan Ullrich](https://github.com/GetUllrichorDieTrying)
+
+Lab 08 Web Request Response Cycle - Collaborated with [Benjamin Small](https://github.com/BenjaminSmall94)
