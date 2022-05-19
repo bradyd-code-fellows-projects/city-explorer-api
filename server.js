@@ -5,8 +5,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-let data = require('./data/weather.json');
-// const axios = require('axios');
+const axios = require('axios');
 
 // USE
 
@@ -25,23 +24,18 @@ app.get('/hello', (req, res) => {
   res.send('hello');
 });
 
-app.get('/weather', (req, res, next) => {
+app.get('/weather', async (req, res, next) => {
+
+  let lat = req.query.lat;
+  let lon = req.query.lon;
+
   try {
-    let city = req.query.city;
 
-    let searchedCity = data.find(location => location.city_name.toLowerCase() === city.toLowerCase());
+    let url = await axios.get(`https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&key=${process.env.REACT_APP_WEATHER_API_KEY}&units=I&days=5`);
+    let weatherData = url.data.data;
+    let dataToSend = weatherData.map( day => new Forecast(day));
+    res.send(dataToSend);
 
-    if (searchedCity === undefined) {
-      res.send('No weather data available');
-    } else {
-      let dataToSend = [];
-      searchedCity.data.map(weatherInfo => {
-        let description = weatherInfo.weather.description;
-        let dateTime = weatherInfo.datetime;
-        dataToSend.push(new Forecast(description, dateTime));
-      });
-      res.send(dataToSend);
-    }
   } catch (e) {
     next(e);
   }
@@ -61,9 +55,11 @@ app.use((e, req, res, next) => {
 // CLASSES
 
 class Forecast {
-  constructor(description, dateTime) {
-    this.date = dateTime;
-    this.description = description;
+  constructor(day) {
+    this.date = day.valid_date;
+    this.description = day.weather.description;
+    this.low = day.low_temp;
+    this.high = day.high_temp;
   }
 }
 
