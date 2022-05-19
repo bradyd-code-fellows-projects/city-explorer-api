@@ -33,6 +33,11 @@
 
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
 
+
+### Lab 06
+
+![lab06-wrrc](src/img/lab06-wrrc.png)
+
 ### Lab 07
 
 #### 17 May 2022
@@ -97,8 +102,14 @@ Finish time:
 
 Actual time needed to complete: -->
 
+![lab09-wrrc](/src/img/lab09-wrrc.png)
+
 ## Credit and Collaborations
+
+Lab 06 Web Request Response Cycle - Collaborated with [Cody Davis](https://github.com/Cozhee/)
 
 Lab 07 Web Request Response Cycle - Collaborated with [Dylan Ullrich](https://github.com/GetUllrichorDieTrying)
 
 Lab 08 Web Request Response Cycle - Collaborated with [Benjamin Small](https://github.com/BenjaminSmall94)
+
+Lab 09 Web Request Response Cycle - Collaborated with [Sam Brindle](https://github.com/samBrindle)
