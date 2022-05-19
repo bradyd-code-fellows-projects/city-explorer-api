@@ -5,41 +5,53 @@ console.log('My first server');
 // REQUIRE
 
 const express = require('express');
-
 let data = require('./data/weather.json');
-
+const cors = require('cors');
+const { response } = require('express');
 require('dotenv').config();
 
 // USE
 
 const app = express();
-
-// app.use(cors());
-
+app.use(cors());
 const PORT = process.env.PORT || 3002;
 // if server is running on port 3002, I know there's a problem with my .env file or how I'm importing it or values in it
 
 // ROUTES
 
-app.get('/', (request, response) => {
-  response.send('Hello from my server');
+app.get('/', (req, res) => {
+  res.send('Hello from my server');
 });
 
-app.get('/hello', (request, response) => {
-  response.send('hello');
+app.get('/hello', (req, res) => {
+  res.send('hello');
 });
 
-app.get('/weather', (request, response) => {
-  let cityData = request.query.city_name;
-  let reqWeather = data.find(weather => weather.city_name === cityData);
-  let dataToSend = new Forecast(reqWeather);
-  response.send(dataToSend);
-  console.log(dataToSend);
+app.get('/weather', (req, res, next) => {
+  try {
+    let city = req.query.city;
+
+    let searchedCity = data.find(location => location.city_name.toLowerCase() === city.toLowerCase());
+
+    if (searchedCity === undefined) {
+      response.send('No weather data available');
+    } else {
+      let dataToSend = [];
+      searchedCity.data.map(weatherInfo => {
+        let description = weatherInfo.weather.description;
+        let dateTime = weatherInfo.datetime;
+        dataToSend.push(new Forecast(description, dateTime));
+      });
+      res.send(dataToSend);
+    }
+  } catch (e) {
+    next(e);
+  }
 });
 
 // catch all "star route"
-app.get('*', (request, response) => {
-  response.send('The thing you are looking for doesn\'t exist');
+app.get('*', (req, res) => {
+  res.send('The thing you are looking for doesn\'t exist');
 });
 
 // ERRORS
@@ -48,9 +60,9 @@ app.get('*', (request, response) => {
 // CLASSES
 
 class Forecast {
-  constructor(weatherObj) {
-    this.date = weatherObj.datetime;
-    this.description = weatherObj.weather.description;
+  constructor(description, dateTime) {
+    this.date = dateTime;
+    this.description = description;
   }
 }
 
