@@ -75,11 +75,11 @@ Actual time needed to complete: 20 mins
 
 ![lab08-wrrc](src/img/lab08-wrrc.png)
 
-Name of feature:
+#### Name of feature: Weather (live)
 
-Estimate of time needed to complete:
+Estimate of time needed to complete: 1 hr
 
-Start time:
+Start time: 5:37
 
 Finish time:
 
