@@ -6,7 +6,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 let data = require('./data/weather.json');
-const axios = require('axios');
+// const axios = require('axios');
 
 // USE
 
@@ -32,7 +32,7 @@ app.get('/weather', (req, res, next) => {
     let searchedCity = data.find(location => location.city_name.toLowerCase() === city.toLowerCase());
 
     if (searchedCity === undefined) {
-      response.send('No weather data available');
+      res.send('No weather data available');
     } else {
       let dataToSend = [];
       searchedCity.data.map(weatherInfo => {
