@@ -55,7 +55,10 @@ app.get('*', (req, res) => {
 });
 
 // ERRORS
-// handle errors
+app.use((e, req, res, next) => {
+  res.status(500).send(e.message);
+  next(e);
+});
 
 // CLASSES
 
