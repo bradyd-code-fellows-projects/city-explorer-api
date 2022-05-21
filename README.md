@@ -113,3 +113,5 @@ Lab 07 Web Request Response Cycle - Collaborated with [Dylan Ullrich](https://gi
 Lab 08 Web Request Response Cycle - Collaborated with [Benjamin Small](https://github.com/BenjaminSmall94)
 
 Lab 09 Web Request Response Cycle - Collaborated with [Sam Brindle](https://github.com/samBrindle)
+
+Lab 10 Web Request Response Cycle - Collaborated with [Stanley Wilder](https://github.com/stanwilder)

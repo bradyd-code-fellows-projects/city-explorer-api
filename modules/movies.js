@@ -11,7 +11,7 @@ async function getMovies (req, res, next) {
     let movieResults = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&query=${city_name}&include_adult=false`);
     let movieData = movieResults.data.results;
     let dataToSend = movieData.map(movie => new Movie(movie));
-    res.send(dataToSend);
+    res.status(200).send(dataToSend);
   } catch (e) {
     next(e);
   }
@@ -19,6 +19,8 @@ async function getMovies (req, res, next) {
 
 class Movie {
   constructor(movie) {
+    this.image_url = 
+    this.posterpath = movie.posterpath;
     this.title = movie.title;
     this.overview = movie.overview;
     this.releasedOn = movie.released_date;
