@@ -24,6 +24,7 @@ class Forecast {
     this.description = day.weather.description;
     this.low = day.low_temp;
     this.high = day.high_temp;
+    this.icon = day.weather.icon;
   }
 }
 
