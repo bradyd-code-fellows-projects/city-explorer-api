@@ -13,7 +13,6 @@ const getMovies = require('./modules/movies');
 const app = express();
 app.use(cors());
 const PORT = process.env.PORT || 3002;
-// if server is running on port 3002, I know there's a problem with my .env file or how I'm importing it or values in it
 
 // ROUTES
 
@@ -21,7 +20,7 @@ app.get('/', (req, res) => {
   res.send('Hello from my server');
 });
 
-app.get('/weather', getWeather);
+app.get('/weather', weatherHandler);
 
 app.get('/movies', getMovies);
 
@@ -30,11 +29,17 @@ app.get('*', (req, res) => {
   res.send('The thing you are looking for doesn\'t exist');
 });
 
+function weatherHandler(req, res) {
+  const { lat, lon } = req.query;
+  getWeather(lat, lon)
+    .then(dataToSend => res.send(dataToSend))
+    .catch((e) => {
+      console.error(e);
+      res.status(500).send('Something went wrong');
+    });
+}
+
 // ERRORS
-app.use((e, req, res, next) => {
-  res.status(500).send(e.message);
-  next(e);
-});
 
 // CLASSES
 
